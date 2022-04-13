@@ -1,0 +1,16 @@
+[package]
+name = "crc-ccitt"
+version = "0.1.0"
+edition = "2021"
+description = "Very efficient, table-free, byte-by-byte CCITT crc polynomial application"
+license = "OSL-3.0"
+
+[dependencies]
+
+[dev-dependencies]
+crc-any = "2"
+rand_pcg = "0.3"
+rand_core = "0.6"
+criterion = "0.3"
+proptest = "1"
+assert_hex = "0.2"
