@@ -39,7 +39,11 @@ impl Algorithm {
     }
 
     const fn init(&self) -> u16 {
-        self.init.reverse_bits()
+        if self.refin {
+            self.init.reverse_bits()
+        } else {
+            self.init
+        }
     }
 
     const fn update(&self, mut crc: u16, bytes: &[u8]) -> u16 {
@@ -140,6 +144,7 @@ pub const CRC_16_IBM_3740: Algorithm = Algorithm {
     residue: 0x000,
 };
 
+/// Alias of [`CRC_16_IBM_3740`]
 pub const CRC_16_AUTOSAR: Algorithm = CRC_16_IBM_3740;
 
 /// CRC-16/IBM-SDLC
@@ -154,8 +159,11 @@ pub const CRC_16_IBM_SDLC: Algorithm = Algorithm {
     residue: 0xf0b8,
 };
 
+/// Alias of [`CRC_16_IBM_SDLC`]
 pub const CRC_16_ISO_HDLC: Algorithm = CRC_16_IBM_SDLC;
+/// Alias of [`CRC_16_IBM_SDLC`]
 pub const CRC_16_ISO_IEC_14443_3_B: Algorithm = CRC_16_IBM_SDLC;
+/// Alias of [`CRC_16_IBM_SDLC`]
 pub const CRC_16_X_25: Algorithm = CRC_16_IBM_SDLC;
 
 /// CRC-16/ISO-IEC-14443-3-A
@@ -182,6 +190,8 @@ pub const CRC_16_KERMIT: Algorithm = Algorithm {
     residue: 0,
 };
 
+/// Alias of [`CRC_16_KERMIT`]
 pub const CRC_16_CCITT: Algorithm = CRC_16_KERMIT;
 
+/// Alias of [`CRC_16_XMODEM`]
 pub const CRC_16_LORA: Algorithm = CRC_16_XMODEM;
