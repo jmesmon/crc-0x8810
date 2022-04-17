@@ -1,20 +1,29 @@
 #![no_std]
 #![forbid(unsafe_code)]
 
-//! compute crcs using the ccitt polynomial efficiently
+//! compute crcs using the ccitt polynomial efficiently without tables
 //!
 //! P(x) = x**16 + x**12 + x**5 + 1
 //!
 //! MSB polynomial (with explicit 1): 0x1021
 //!
 //! https://users.ece.cmu.edu/~koopman/crc/c16/0x8810.txt
+//!
+//! The method used is described in a few places:
+//!
+//!  - [Greg Cook provides some commented 6502 asm](http://6502.org/source/integers/crc-more.html)
+//!  - [Jon Buller describes how to determine it through automated symbolic calculation and provides some 8051 asm](https://groups.google.com/g/comp.arch.embedded/c/fvQ7yM5F6ys/m/3xcgqF3Kqc4J?pli=1)
+//!  - [adapted by others into C](https://www.ccsinfo.com/forum/viewtopic.php?t=24977)
+//!  - the same method is used in [avr-libc](https://www.nongnu.org/avr-libc/user-manual/group__util__crc.html)'s `_crc_ccitt_update` function.
+//!
 
 /// The lowest level operation, applies a single byte of data to a given crc and returns the new
 /// crc
 ///
 /// NOTE: internally, this is performing a least significant bit (LSB) first crc. This means that
 /// performing an MSB first operation requires reversing the bits of each input byte and revsersing
-/// the final CRC output.
+/// the final CRC output. It _may_ be possible to determine a direct method to calculate the crc
+/// without needing a reverse bits operation (which can be expensive on some platforms)
 pub const fn update(crc: u16, data: u8) -> u16 {
     let data = data ^ (crc as u8);
     let data = data ^ (data << 4);
