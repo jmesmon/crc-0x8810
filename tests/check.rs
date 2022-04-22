@@ -1,5 +1,5 @@
 use assert_hex::assert_eq_hex as assert_eq;
-use crc_ccitt::*;
+use crc_0x8810::*;
 
 fn check(algorithm: &Algorithm) {
     assert_eq!(algorithm.checksum(b"123456789"), algorithm.check);

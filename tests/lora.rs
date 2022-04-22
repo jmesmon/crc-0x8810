@@ -1,17 +1,17 @@
 #[test]
 fn eu868_sf9_crc1() {
     let data = [0x00, 0x00, 0x00, 0x00, 0x02, 0xCC];
-    assert_eq!(crc_ccitt::CRC_16_LORA.checksum(&data), 0x7EA2);
+    assert_eq!(crc_0x8810::CRC_16_LORA.checksum(&data), 0x7EA2);
 }
 
 #[test]
 fn eu868_sf9_crc2() {
     let data = [0x00, 0x01, 0x20, 0x00, 0x00, 0x81, 0x03];
-    assert_eq!(crc_ccitt::CRC_16_LORA.checksum(&data), 0x55DE);
+    assert_eq!(crc_0x8810::CRC_16_LORA.checksum(&data), 0x55DE);
 }
 
 #[test]
 fn us915_sf12_crc2() {
     let data = [0x00, 0x01, 0x20, 0x00, 0x00, 0x81, 0x03, 0x00];
-    assert_eq!(crc_ccitt::CRC_16_LORA.checksum(&data), 0xD450);
+    assert_eq!(crc_0x8810::CRC_16_LORA.checksum(&data), 0xD450);
 }

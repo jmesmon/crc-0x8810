@@ -5,6 +5,7 @@
 //!
 //! P(x) = x**16 + x**12 + x**5 + 1
 //!
+//! MSB polynomial: 0x8810
 //! MSB polynomial (with explicit 1): 0x1021
 //!
 //! https://users.ece.cmu.edu/~koopman/crc/c16/0x8810.txt

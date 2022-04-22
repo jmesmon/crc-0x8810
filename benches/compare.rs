@@ -7,7 +7,7 @@ fn crc_xmodem(c: &mut Criterion) {
     let mut buf = [0u8; 4096];
     rng.fill_bytes(&mut buf);
     group.bench_function("crc-ccitt", |b| {
-        b.iter(|| crc_ccitt::CRC_16_XMODEM.checksum(black_box(&buf)))
+        b.iter(|| crc_0x8810::CRC_16_XMODEM.checksum(black_box(&buf)))
     });
 
     group.bench_function("crc-any", |b| {

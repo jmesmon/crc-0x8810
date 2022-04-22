@@ -106,6 +106,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "crc-0x8810"
+version = "0.1.0"
+dependencies = [
+ "assert_hex",
+ "crc",
+ "crc-any",
+ "criterion",
+ "once_cell",
+ "proptest",
+ "rand",
+ "rand_core",
+ "rand_pcg",
+]
+
+[[package]]
 name = "crc-any"
 version = "2.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -119,20 +134,6 @@ name = "crc-catalog"
 version = "1.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ccaeedb56da03b09f598226e25e80088cb4cd25f316e6e4df7d695f0feeb1403"
-
-[[package]]
-name = "crc-ccitt"
-version = "0.1.0"
-dependencies = [
- "assert_hex",
- "crc",
- "crc-any",
- "criterion",
- "proptest",
- "rand",
- "rand_core",
- "rand_pcg",
-]
 
 [[package]]
 name = "criterion"
@@ -383,6 +384,12 @@ dependencies = [
  "hermit-abi",
  "libc",
 ]
+
+[[package]]
+name = "once_cell"
+version = "1.10.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "87f3e037eac156d1775da914196f0f37741a274155e34a0b7e427c35d2a2ecb9"
 
 [[package]]
 name = "oorandom"

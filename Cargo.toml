@@ -1,8 +1,8 @@
 [package]
-name = "crc-ccitt"
+name = "crc-0x8810"
 version = "0.1.0"
 edition = "2021"
-description = "Very efficient, table-free, byte-by-byte CCITT crc polynomial application"
+description = "Very efficient, table-free, byte-by-byte 0x8810/0x1021 crc polynomial application"
 license = "OSL-3.0"
 
 [dependencies]
@@ -16,6 +16,7 @@ criterion = "0.3"
 proptest = "1"
 assert_hex = "0.2"
 rand = "0.8"
+once_cell = "1"
 
 [[bench]]
 name = "compare"
